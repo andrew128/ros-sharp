@@ -15,9 +15,8 @@ public class PlayerMovement : NetworkBehaviour
     Transform rightControllerPlayerTransform;
 
 
-    // Use this for initialization
-    void Start()
-    {
+    public override void OnStartLocalPlayer()
+    {   
         headRigTransform = GameObject.Find("Camera (eye)").transform;
         leftControllerRigTransform = GameObject.Find("Controller (left)").transform;
         rightControllerRigTransform = GameObject.Find("Controller (right)").transform;
