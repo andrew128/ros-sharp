@@ -31,7 +31,7 @@ namespace RosSharp.RosBridgeClient
 
         private void FixedUpdate()
         {
-                UpdateMessage();
+                //UpdateMessage();
         }
 
         private void InitializeMessage()
@@ -41,7 +41,7 @@ namespace RosSharp.RosBridgeClient
             message.header.frame_id = FrameId;
         }
 
-        private void UpdateMessage()
+        public void UpdateMessage()
         {
             message.header.Update();
             message.pose.position = GetGeometryPoint(PublishedTransform.position.Unity2Ros());
