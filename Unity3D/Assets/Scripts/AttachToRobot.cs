@@ -69,7 +69,14 @@ public class AttachToRobot : NetworkBehaviour {
 
         // if send button is depressed, update/publish each publisher created in start
         // call update message function from pose stamped published for each arm
-
+        if (Input.GetAxis("Left Trigger") > 0.5f) {
+            // left trigger
+            Debug.Log("open left gripper");
+        }
+        if (Input.GetAxis("Right Trigger") > 0.5f) {
+            // left trigger
+            Debug.Log("open right gripper");
+        }
         // left arm
         // how to check if left arm send button is pressed?
         if (Input.GetAxis("Left Grip") > 0.5f)
