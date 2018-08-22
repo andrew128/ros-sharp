@@ -7,8 +7,8 @@ using System;
 
 public class AttachToRobot : MonoBehaviour {
 
-    public PoseStampedPublisher left_arm;
-    public PoseStampedPublisher right_arm;
+    public RobotCalibratedPosePublisher left_arm;
+    public RobotCalibratedPosePublisher right_arm;
 
     void Update () {
 

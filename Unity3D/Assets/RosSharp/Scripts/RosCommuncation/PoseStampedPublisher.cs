@@ -31,7 +31,7 @@ namespace RosSharp.RosBridgeClient
 
         private void FixedUpdate()
         {
-                //UpdateMessage();
+                UpdateMessage();
         }
 
         private void InitializeMessage()
@@ -50,7 +50,7 @@ namespace RosSharp.RosBridgeClient
             Publish(message);
         }
 
-        private Messages.Geometry.Point GetGeometryPoint(Vector3 position)
+        protected Messages.Geometry.Point GetGeometryPoint(Vector3 position)
         {
             Messages.Geometry.Point geometryPoint = new Messages.Geometry.Point();
             geometryPoint.x = position.x;
@@ -59,7 +59,7 @@ namespace RosSharp.RosBridgeClient
             return geometryPoint;
         }
 
-        private Messages.Geometry.Quaternion GetGeometryQuaternion(Quaternion quaternion)
+        protected Messages.Geometry.Quaternion GetGeometryQuaternion(Quaternion quaternion)
         {
             Messages.Geometry.Quaternion geometryQuaternion = new Messages.Geometry.Quaternion();
             geometryQuaternion.x = quaternion.x;
