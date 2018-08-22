@@ -5,55 +5,12 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System;
 
-public class AttachToRobot : NetworkBehaviour {
+public class AttachToRobot : MonoBehaviour {
 
-    int netId;
+    public PoseStampedPublisher left_arm;
+    public PoseStampedPublisher right_arm;
 
-    //public GameObject rosConnector;
-
-    private PoseStampedPublisher left_arm;
-    private PoseStampedPublisher right_arm;
-
-    public GameObject leftController;
-    public GameObject rightController;
-    public GameObject robot1;
-
-    private Message message;
-    private RosSocket rosSocket;
-    private string publicationIdLeft;
-    private string publicationIdRight;
-
-    public override void OnStartLocalPlayer()
-    {
-
-        netId = (int)GetComponent<NetworkIdentity>().netId.Value;
-        if (netId == 1)
-        {
-            // create poseStamped publisher on RosConnector1 for each controller, 
-            // and fill it relavent method variables
-
-            PoseStampedPublisher[] publisherComponents = GetComponents<PoseStampedPublisher>();
-            foreach(PoseStampedPublisher p in publisherComponents)
-            {
-                if(p.Topic=="/baxter_left_controller")
-                {
-                    left_arm = p;
-                    left_arm.PublishedTransform = leftController.transform;
-                } else if(p.Topic=="/baxter_right_controller")
-                {
-                    right_arm = p;
-                    right_arm.PublishedTransform = rightController.transform;
-                }
-            }
-        }
-    }
-
-    // Update is called once per frame
     void Update () {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
 
         // if send button is depressed, update/publish each publisher created in start
         // call update message function from pose stamped published for each arm
